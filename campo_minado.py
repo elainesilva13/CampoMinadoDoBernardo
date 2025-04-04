@@ -1,22 +1,5 @@
 import random
 
-# erro import circular: quando um import retorna para o mesmo arquivo, causando um loop infinito
-# from campo_minado_1facil import CampoMinadoFacil
-# from campo_minado_2medio import CampoMinadoMedio
-# from campo_minado_3dificil import CampoMinadoDificil
-# from campo_minado_4complicado import CampoMinadoComplicado
-# from campo_minado_5entediado import CampoMinadoEntediado
-# from campo_minado_6horas_livres import CampoMinadoHorasLivres
-
-# ERRO: faltou o () para instanciar a classe!!!
-# Facil=CampoMinadoFacil
-# Medio=CampoMinadoMedio
-# Dificil=CampoMinadoDificil
-# Complicado=CampoMinadoComplicado
-# Entediado=CampoMinadoEntediado
-# Horas_livres=CampoMinadoHorasLivres
-
-
 class Campo_minado:  # instanciando a classe = criando a classe e colocando na prateleirinha
     "Esta classe serve como um molde para as outras classes campo minado, ou seja é a classe INTERFACE."
 
@@ -155,5 +138,44 @@ class Campo_minado:  # instanciando a classe = criando a classe e colocando na p
         return f"{bombas_proximas:2}"
 
 
-# campo_minado = Campo_minado()
-# campo_minado.jogo()
+class CampoMinadoFacil(Campo_minado):
+    def __init__(self):
+        super().__init__(linhas=4, colunas=4, minas=2)
+
+
+class CampoMinadoMedio(Campo_minado):
+    def __init__(self):
+        super().__init__(linhas=6, colunas=6, minas=4)
+
+
+class CampoMinadoDificil(Campo_minado):
+    def __init__(self):
+        super().__init__(linhas=9, colunas=9, minas=8)
+
+
+class CampoMinadoComplicado(Campo_minado):
+    def __init__(self):
+        super().__init__(linhas=13, colunas=13, minas=15)
+
+
+class CampoMinadoEntediado(Campo_minado):
+    def __init__(self):
+        super().__init__(linhas=15, colunas=15, minas=18)
+
+
+class CampoMinadoHorasLivres(Campo_minado):
+    def __init__(self):
+        super().__init__(linhas=17, colunas=17, minas=20)
+
+
+
+class ConstrutorCampoMinado:
+    def __init__(self):
+        self.dificuldades = {
+            'Fácil': CampoMinadoFacil,
+            'Médio': CampoMinadoMedio,
+            'Difícil': CampoMinadoDificil,
+            'Complicado': CampoMinadoComplicado,
+            'Entediado': CampoMinadoEntediado,
+            'Horas Livres': CampoMinadoHorasLivres,
+        }

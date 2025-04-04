@@ -5,13 +5,9 @@ from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.image import Image
 from kivy.core.window import Window
-from kivy.graphics import Color, Rectangle
  
-from campo_minado import Campo_minado
-from campo_minado_1facil import CampoMinadoFacil
-from construtor_campo_minado import ConstrutorCampoMinado
+from campo_minado import Campo_minado, ConstrutorCampoMinado
 
 class CampoMinadoAndroid(App):
     "A classe App (biblioteca kivy) trará para a class CampoMinadoAndroid as configurações necessárias para sua conversão em arquivo .apk (para publicação na loja andoid)"
@@ -87,7 +83,7 @@ class TelaDeJogo(Screen):
         barra_lateral=BoxLayout(orientation="vertical",size_hint=(0.15, 1),padding=[10,10,10,10])
         self.botao_de_desistir= Button(text="Desistir",size_hint=(1, 0.50))
         self.botao_de_desistir.bind(on_press=self.desistir_voltar)
-        self.botao_de_alternar= Button(text="Marcar bombas", size_hint=(1, 0.50)) 
+        self.botao_de_alternar= Button(text="Marcar\nbombas", size_hint=(1, 0.50)) 
         barra_lateral.add_widget(self.botao_de_desistir)
         barra_lateral.add_widget(self.botao_de_alternar)
         self.layout.add_widget(barra_lateral)
@@ -175,35 +171,6 @@ class TelaDeJogo(Screen):
  
         if len(self.lista_de_coordenadas) == (self.jogo.linhas * self.jogo.colunas - self.jogo.minas):
             self.show_popup("Parabéns, você venceu!")
-# tem menu de contexto
-
-
-    # def revelar_mina(self, botao_do_campo):
-    #     if botao_do_campo.text!="":
-    #         return
-        
-    #     coordenadas=self.botoes[botao_do_campo]
-    #     tem_bomba= self.jogo.verificacao_da_casa(coordenadas, self.minas)
-        
-        
-    #     if tem_bomba == True:
-    #         #funcao para pintar de vermelho
-    #         perdeu=Popup(title="Voce perdeu", content=Label(text="Você perdeu!"), size_hint=(0.50, 0.25))
-    #         perdeu.bind(on_dismiss=self.voltar_para_tela_inicial)
-    #         perdeu.open()
-    #         return
-        
-
-    #     contagem=self.jogo.pega_vizinhos(x=coordenadas[0], y=coordenadas[1], lista_minas=self.minas)
-    #     botao_do_campo.text=str(contagem)
-    #     self.lista_de_coordenadas.append(coordenadas)
-    #     casas_a_percorrer = self.jogo.linhas * self.jogo.colunas - self.jogo.minas
-    #     if len(self.lista_de_coordenadas) == casas_a_percorrer:
-    #         ganhou=Popup(title="Voce ganhou!", content=Label(text="Parabéns! Você ganhou!"), size_hint=(0.50, 0.25))
-    #         ganhou.bind(on_dismiss=self.voltar_para_tela_inicial)
-    #         ganhou.open()
-
-
 
 
 CampoMinadoAndroid().run()
